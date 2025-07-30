@@ -12,6 +12,7 @@ import com.example.gopetalk_extra.R
 import com.example.gopetalk_extra.data.api.ApiClient
 import com.example.gopetalk_extra.data.api.ChannelService
 import com.example.gopetalk_extra.data.storage.SessionManager
+import com.example.gopetalk_extra.service.TalkController
 import com.google.android.material.button.MaterialButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -67,6 +68,7 @@ class BlockInfoFragment : Fragment() {
         btnDisconnect = view.findViewById(R.id.btn_disconnect)
 
         btnDisconnect.setOnClickListener {
+            TalkController.presenter?.disconnect()
             disconnectFromChannel()
         }
     }

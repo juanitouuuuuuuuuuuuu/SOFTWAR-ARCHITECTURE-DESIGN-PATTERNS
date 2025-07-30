@@ -7,7 +7,7 @@ interface ButtonTalkContract {
     interface View {
         fun onTalkingStarted()
         fun onTalkingStopped()
-        fun onAudioReceived(data: ByteArray)
+        fun vibrateShort()
         fun onAudioSent()
         fun showError(message: String)
         fun updateStatus(status: String)

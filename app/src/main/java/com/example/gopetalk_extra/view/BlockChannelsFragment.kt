@@ -36,7 +36,7 @@ class BlockChannelsFragment : Fragment(), ChannelContract.View {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recyclerView_channels)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext()) // ← Importante
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         sessionManager = SessionManager(requireContext())
         ApiClient.init(requireContext())

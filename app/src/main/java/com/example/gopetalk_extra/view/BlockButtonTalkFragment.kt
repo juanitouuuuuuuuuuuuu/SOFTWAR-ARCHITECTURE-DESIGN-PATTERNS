@@ -3,6 +3,7 @@ package com.example.gopetalk_extra.view
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.media.MediaPlayer
 import android.os.Build
 import android.os.Bundle
 import android.os.VibrationEffect
@@ -31,6 +32,9 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
     private var lastKnownChannel: String? = null
     private val RECORD_AUDIO_REQUEST_CODE = 100
     private var currentChannel = ""
+    private lateinit var startSound: MediaPlayer
+    private lateinit var endSound: MediaPlayer
+
 
     private val userId: String
         get() = sessionManager.getAccessToken().orEmpty()
@@ -43,6 +47,8 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        startSound = MediaPlayer.create(requireContext(), R.raw.audio_start_talking)
+        endSound = MediaPlayer.create(requireContext(), R.raw.audio_end_talking)
 
         btnTalk = view.findViewById(R.id.btn_talk)
         sessionManager = SessionManager(requireContext())
@@ -69,7 +75,7 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
         }
 
         setupTouchEvents()
-        startChannelCheckLoop() // continúa verificando en segundo plano
+        startChannelCheckLoop()
     }
 
     private fun hasAudioPermission(): Boolean {
@@ -103,15 +109,39 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
         btnTalk.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
+                    playStartSound()
                     presenter.startTalking(userId)
                     true
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    playEndSound()
                     presenter.stopTalking()
                     true
                 }
                 else -> false
             }
+        }
+    }
+
+    private fun playStartSound() {
+        try {
+            if (startSound.isPlaying) {
+                startSound.seekTo(0)
+            }
+            startSound.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun playEndSound() {
+        try {
+            if (endSound.isPlaying) {
+                endSound.seekTo(0)
+            }
+            endSound.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -210,9 +240,7 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
         }
     }
 
-    override fun updateStatus(status: String) {
-        // Opcional
-    }
+    override fun updateStatus(status: String) {}
 
     override fun getContextSafe() = requireContext()
     override fun setChannel(channel: Int) {}
@@ -222,10 +250,9 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
         presenter.disconnect()
         super.onDestroyView()
         channelCheckHandler.removeCallbacks(channelCheckRunnable)
+        startSound.release()
+        endSound.release()
 
     }
 
-    override fun setConnectedUsers(users: Int) {
-
-    }
 }

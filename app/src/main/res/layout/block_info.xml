@@ -7,8 +7,8 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="132dp"
+        android:layout_width="320dp"
+        android:layout_height="370dp"
         android:layout_marginTop="4dp"
         android:background="@drawable/bg_block"
         android:orientation="vertical"
@@ -19,46 +19,78 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.9">
 
-        <!-- Usando MaterialButton correctamente -->
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="122dp"
-            android:layout_height="42dp"
+            android:layout_width="280dp"
+            android:layout_height="46dp"
             android:background="@drawable/img_border"
             android:src="@drawable/wolf"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.224"
+            app:layout_constraintVertical_bias="0.044"
             app:tint="@color/white" />
 
-        <TextView
-            android:id="@+id/text_channel"
-            android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:text="CH 3"
-            android:textColor="#FFFFFF"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_disconnect"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="212dp"
+            android:layout_height="170dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/bg_block"
+            android:orientation="vertical"
+            android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.698"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.433" />
-
-        <TextView
-            android:id="@+id/text_users_on_channel"
-            android:layout_width="wrap_content"
-            android:layout_height="20dp"
-            android:layout_marginStart="8dp"
-            android:text="3 users"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.64" />
+            app:layout_constraintWidth_percent="0.9">
+
+            <TextView
+                android:id="@+id/text_channel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_item_info"
+                android:gravity="center"
+                android:text="CH 3"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_users_on_channel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_item_info"
+                android:gravity="center"
+                android:text="3 users"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_channel"
+                app:layout_constraintVertical_bias="0.777" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_see_channels"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_disconnect_button_enable"
+            android:text="channels"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.111"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_disconnect"
@@ -70,8 +102,8 @@
             app:cornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.74"
-            app:layout_constraintStart_toEndOf="@+id/text_users_on_channel" />
+            app:layout_constraintHorizontal_bias="0.617"
+            app:layout_constraintStart_toEndOf="@+id/btn_see_channels" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

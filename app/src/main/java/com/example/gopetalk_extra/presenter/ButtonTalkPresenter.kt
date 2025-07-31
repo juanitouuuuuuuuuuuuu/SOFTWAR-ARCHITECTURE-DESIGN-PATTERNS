@@ -43,7 +43,6 @@ class ButtonTalkPresenter(
                 if (response.isSuccessful) {
                     val users = response.body() ?: emptyList()
 
-                    view.setConnectedUsers(users.size)
 
                     if (users.size >= 5) {
                         view.showError("El canal está lleno (límite de 5 usuarios)")
@@ -144,7 +143,7 @@ class ButtonTalkPresenter(
                     if (response.isSuccessful) {
                         val users = response.body() ?: emptyList()
                         withContext(Dispatchers.Main) {
-                            view.setConnectedUsers(users.size)
+
                         }
                     } else {
                         Log.e("Polling", "Respuesta fallida: ${response.code()}")

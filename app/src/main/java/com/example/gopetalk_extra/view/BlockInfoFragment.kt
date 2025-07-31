@@ -105,7 +105,7 @@ class BlockInfoFragment : Fragment() {
         if (isConnected && currentChannel != null) {
             fetchUsersOnChannel(currentChannel!!)
         } else {
-            textUsers.text = "0 users"
+            textUsers.text = "0 usuarios"
         }
     }
 

@@ -1,0 +1,14 @@
+class ObjetoReal:
+    def operacion(self):
+        print("Operación real")
+
+class Proxy:
+    def __init__(self):
+        self._objeto_real = None
+
+    def operacion(self):
+        if self._objeto_real is None:
+            self._objeto_real = ObjetoReal()
+        print("Proxy: Antes de llamar al objeto real")
+        self._objeto_real.operacion()
+        print("Proxy: Después de la llamada")

@@ -1,0 +1,14 @@
+class Estrategia:
+    def ejecutar(self):
+        pass
+
+class EstrategiaA(Estrategia):
+    def ejecutar(self):
+        print("Algoritmo A")
+
+class Contexto:
+    def __init__(self, estrategia):
+        self._estrategia = estrategia
+
+    def ejecutar_estrategia(self):
+        self._estrategia.ejecutar()

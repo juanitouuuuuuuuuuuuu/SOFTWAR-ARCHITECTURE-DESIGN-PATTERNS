@@ -1,0 +1,20 @@
+// Template Method
+class Beverage {
+  prepareRecipe() {
+    this.boilWater();
+    this.brew();
+    this.pourInCup();
+  }
+  boilWater() { console.log("Boiling water"); }
+  pourInCup() { console.log("Pouring into cup"); }
+}
+
+class Tea extends Beverage {
+  brew() { console.log("Steeping the tea"); }
+}
+class Coffee extends Beverage {
+  brew() { console.log("Dripping coffee through filter"); }
+}
+
+new Tea().prepareRecipe();
+new Coffee().prepareRecipe();

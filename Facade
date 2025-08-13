@@ -1,0 +1,18 @@
+Facade
+
+Pseudocodigo
+
+clase FachadaSistema:
+    método simple que internamente llama a varios subsistemas
+
+Kotlin
+
+class CPU { fun iniciar() = println("CPU iniciada") }
+class Pantalla { fun mostrar() = println("Pantalla encendida") }
+class Computadora(val cpu: CPU, val pantalla: Pantalla) {
+    fun encender() { cpu.iniciar(); pantalla.mostrar() }
+}
+
+fun main() {
+    Computadora(CPU(), Pantalla()).encender()
+}

@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.os.VibratorManager
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -34,7 +35,6 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
     private var currentChannel = ""
     private lateinit var startSound: MediaPlayer
     private lateinit var endSound: MediaPlayer
-
 
     private val userId: String
         get() = sessionManager.getAccessToken().orEmpty()
@@ -104,6 +104,8 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
             Toast.makeText(requireContext(), "Permiso de micrófono denegado", Toast.LENGTH_LONG).show()
         }
     }
+
+
 
     private fun setupTouchEvents() {
         btnTalk.setOnTouchListener { _, event ->
@@ -207,10 +209,6 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
         btnTalk.elevation = 4f
     }
 
-
-
-
-
     override fun onTalkingStarted() {
         activity?.runOnUiThread {
             btnTalk.text = "Hablando..."
@@ -241,7 +239,6 @@ class BlockButtonTalkFragment : Fragment(), ButtonTalkContract.View {
     }
 
     override fun updateStatus(status: String) {}
-
     override fun getContextSafe() = requireContext()
     override fun setChannel(channel: Int) {}
     override fun getChannel(): Int = 0

@@ -37,12 +37,12 @@ class BlockChannelsFragment : Fragment(), ChannelContract.View {
 
         recyclerView = view.findViewById(R.id.recyclerView_channels)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         sessionManager = SessionManager(requireContext())
-        ApiClient.init(requireContext())
 
+        ApiClient.init(requireContext())
+        val apiService = ApiClient.getApiService()
         val repository: ChannelRepository = ChannelRepositoryImpl(ApiClient.getChannelService())
-        presenter = ChannelPresenter(this, repository, sessionManager)
+        presenter = ChannelPresenter(this, repository, sessionManager,apiService)
 
         presenter.getChannels()
     }
@@ -55,16 +55,12 @@ class BlockChannelsFragment : Fragment(), ChannelContract.View {
         }
     }
 
-
     override fun showError(message: String) {
         Toast.makeText(requireContext(), "Error: $message", Toast.LENGTH_SHORT).show()
     }
 
-    override fun showLoading() {
-    }
-
-    override fun hideLoading() {
-    }
+    override fun showLoading() {}
+    override fun hideLoading() {}
 
     override fun navigateToLogin() {
         Toast.makeText(requireContext(), "Sesión cerrada. Redirigiendo...", Toast.LENGTH_SHORT).show()

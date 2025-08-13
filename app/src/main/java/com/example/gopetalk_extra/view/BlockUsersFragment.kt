@@ -23,9 +23,9 @@ class BlockUsersFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: UserAdapter
     private lateinit var sessionManager: SessionManager
-
     private val handler = Handler(Looper.getMainLooper())
     private val updateRunnable = object : Runnable {
+
         override fun run() {
             checkConnectionAndUpdate()
             handler.postDelayed(this, 5000)
@@ -45,7 +45,6 @@ class BlockUsersFragment : Fragment() {
 
         sessionManager = SessionManager(requireContext())
         recyclerView = view.findViewById(R.id.recyclerView_users)
-
         adapter = UserAdapter(emptyList())
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
@@ -65,12 +64,9 @@ class BlockUsersFragment : Fragment() {
         val currentChannel = sessionManager.getCurrentChannel()
 
         if (currentChannel.isNullOrBlank()) {
-            // No está conectado, limpiar lista
             adapter.updateUsers(emptyList())
             return
         }
-
-        // Si hay canal, pedir usuarios
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = ApiClient.getChannelService().getChannelUsers(currentChannel)

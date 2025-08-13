@@ -3,7 +3,6 @@ package com.example.gopetalk_extra.data.api
 import android.media.AudioFormat
 import android.media.AudioManager
 import android.media.AudioTrack
-import android.util.Log
 
 class AudioPlaybackService {
     private val bufferSize = AudioTrack.getMinBufferSize(

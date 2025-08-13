@@ -34,12 +34,11 @@ class BlockInfoFragment : Fragment() {
     private lateinit var btnDisconnect: MaterialButton
     private lateinit var btnSeeChannels: MaterialButton
     private lateinit var recyclerChannels: RecyclerView
-
     private var currentChannel: String? = null
     private var isConnected = false
-
     private val handler = Handler(Looper.getMainLooper())
     private val updateRunnable = object : Runnable {
+
         override fun run() {
             currentChannel = sessionManager.getCurrentChannel()
             isConnected = currentChannel != null
@@ -63,13 +62,11 @@ class BlockInfoFragment : Fragment() {
         sessionManager = SessionManager(requireContext())
         ApiClient.init(requireContext())
         channelService = ApiClient.getChannelService()
-
         textChannel = view.findViewById(R.id.text_channel)
         textUsers = view.findViewById(R.id.text_users_on_channel)
         btnDisconnect = view.findViewById(R.id.btn_disconnect)
         btnSeeChannels = view.findViewById(R.id.btn_see_channels)
         recyclerChannels = view.findViewById(R.id.recycler_channels)
-
         recyclerChannels.layoutManager = GridLayoutManager(requireContext(), 3)
         recyclerChannels.visibility = View.GONE
 

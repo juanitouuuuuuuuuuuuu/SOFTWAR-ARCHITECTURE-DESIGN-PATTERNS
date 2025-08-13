@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.gopetalk_extra"
-    xmlns:tools="http://schemas.android.com/tools">
+    package="com.example.gopetalk_extra">
     <uses-feature
         android:name="android.hardware.microphone"
         android:required="false" />
@@ -17,15 +16,11 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.VIBRATE" />
-
-
-
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-
 
     <application
         android:networkSecurityConfig="@xml/security_config"
@@ -38,7 +33,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GopeTalkExtra">
 
-
         <activity
             android:name=".view.auth.LoginActivity"
             android:exported="true"
@@ -50,20 +44,17 @@
             </intent-filter>
         </activity>
 
-        <!-- Actividad de Registro -->
         <activity
             android:name=".view.auth.RegisterActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.GopeTalkExtra" />
 
-        <!-- Actividad principal (bloques) -->
         <activity
             android:name=".view.MainActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:theme="@style/Theme.GopeTalkExtra" />
-
     </application>
 
 </manifest>

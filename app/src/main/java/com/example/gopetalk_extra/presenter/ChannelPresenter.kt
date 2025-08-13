@@ -2,6 +2,7 @@ package com.example.gopetalk_extra.presenter
 
 import android.util.Log
 import com.example.gopetalk_extra.contract.ChannelContract
+import com.example.gopetalk_extra.data.api.ApiService
 import com.example.gopetalk_extra.data.storage.SessionManager
 import com.example.gopetalk_extra.domain.repository.ChannelRepository
 import kotlinx.coroutines.CoroutineScope
@@ -12,7 +13,8 @@ import kotlinx.coroutines.withContext
 class ChannelPresenter(
     private val view: ChannelContract.View,
     private val repository: ChannelRepository,
-    private val sessionManager: SessionManager
+    private val sessionManager: SessionManager,
+    private val apiService: ApiService
 ) : ChannelContract.Presenter {
 
     override fun getChannels() {
@@ -47,6 +49,7 @@ class ChannelPresenter(
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 sessionManager.clearSession()
+                apiService.logout()
                 withContext(Dispatchers.Main) {
                     view.showLogoutMessage("Sesión cerrada correctamente")
                     view.navigateToLogin()

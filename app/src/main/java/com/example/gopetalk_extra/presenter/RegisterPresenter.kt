@@ -20,7 +20,6 @@ class RegisterPresenter(private val view: RegisterContract.View) : RegisterContr
     ) {
         Log.d("RegisterPresenter", "Iniciando registro...")
 
-        // Validaciones básicas
         if (name.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank() || confirmPassword.isBlank()) {
             view.showError("Por favor, completa todos los campos.")
             return

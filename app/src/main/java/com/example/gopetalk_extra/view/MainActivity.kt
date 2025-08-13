@@ -10,7 +10,6 @@ import com.example.gopetalk_extra.view.auth.LoginActivity
 import com.google.android.material.button.MaterialButton
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,11 +23,11 @@ class MainActivity : AppCompatActivity() {
             sessionManager.clearSession()
             Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
 
-            // Redirige al login
             val intent = Intent(this, LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }
+
 }
 

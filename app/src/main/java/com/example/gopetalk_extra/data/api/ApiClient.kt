@@ -58,13 +58,11 @@ object ApiClient {
         return retrofit.create(ChannelService::class.java)
     }
 
-
     fun getWebSocket(channelName: String, userId: String, listener: WebSocketListener): WebSocket {
         checkInit()
 
         val token = sessionManager.getAccessToken()
         val url = Constants.WS_URL
-
         val request = Request.Builder()
             .url(url)
             .addHeader("Authorization", "Bearer $token")
@@ -74,6 +72,10 @@ object ApiClient {
 
         return okHttpClient.newWebSocket(request, listener)
     }
+    fun getApiService(): ApiService {
+        return retrofit.create(ApiService::class.java)
+    }
+
 }
 
 

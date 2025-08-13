@@ -28,7 +28,7 @@ class UserAdapter(private var users: List<String>) :
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val email = users[position]
         holder.nameUser.text = email
-        holder.iconUser.setImageResource(R.drawable.user_icon) // imagen local
+        holder.iconUser.setImageResource(R.drawable.user_icon)
     }
 
     fun updateUsers(newUsers: List<String>) {

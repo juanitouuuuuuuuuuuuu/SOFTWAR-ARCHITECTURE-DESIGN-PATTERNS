@@ -42,32 +42,16 @@ class SessionManager(context: Context) {
         sharedPreferences.edit().putString(KEY_USER_ID, userId).apply()
     }
 
-    fun getUserId(): String? {
-        return sharedPreferences.getString(KEY_USER_ID, null)
-    }
-
     fun saveUserName(name: String) {
         sharedPreferences.edit().putString(KEY_USER_FIRST_NAME, name).apply()
-    }
-
-    fun getUserName(): String? {
-        return sharedPreferences.getString(KEY_USER_FIRST_NAME, null)
     }
 
     fun saveUserLastName(lastName: String) {
         sharedPreferences.edit().putString(KEY_USER_LAST_NAME, lastName).apply()
     }
 
-    fun getUserLastName(): String? {
-        return sharedPreferences.getString(KEY_USER_LAST_NAME, null)
-    }
-
     fun saveUserEmail(email: String) {
         sharedPreferences.edit().putString(KEY_USER_EMAIL, email).apply()
-    }
-
-    fun getUserEmail(): String? {
-        return sharedPreferences.getString(KEY_USER_EMAIL, null)
     }
 
     fun clearSession() {

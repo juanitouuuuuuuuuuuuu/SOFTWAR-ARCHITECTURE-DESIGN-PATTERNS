@@ -43,7 +43,6 @@ class ButtonTalkPresenter(
                 if (response.isSuccessful) {
                     val users = response.body() ?: emptyList()
 
-
                     if (users.size >= 5) {
                         view.showError("El canal está lleno (límite de 5 usuarios)")
                         return@withContext
@@ -69,7 +68,6 @@ class ButtonTalkPresenter(
 
                 client = GoWebSocketClient(userId, listener)
                 client?.connect(channelName)
-
                 isConnected = true
                 currentChannelName = channelName
 
@@ -101,8 +99,8 @@ class ButtonTalkPresenter(
         }
 
         if (isTalking) return
-
         val context = view.getContextSafe()
+
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)
             != PackageManager.PERMISSION_GRANTED
         ) {
@@ -119,7 +117,6 @@ class ButtonTalkPresenter(
         isTalking = true
         socket.send("START")
         audioService.startStreaming(client!!)
-
         view.onTalkingStarted()
         Log.d("BlockButtonTalkPresenter", "START enviado")
     }
@@ -129,7 +126,6 @@ class ButtonTalkPresenter(
         isTalking = false
 
         client?.getWebSocket()?.send("STOP")
-
         audioService.stopStreaming()
         view.onTalkingStopped()
     }

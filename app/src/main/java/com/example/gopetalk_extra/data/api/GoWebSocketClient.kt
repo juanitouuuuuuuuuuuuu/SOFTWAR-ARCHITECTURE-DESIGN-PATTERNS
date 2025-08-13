@@ -65,14 +65,6 @@ class GoWebSocketClient(
         }
     }
 
-    fun send(message: String) {
-        if (webSocket?.send(message) == true) {
-            Log.d("WebSocket", "Mensaje enviado: $message")
-        } else {
-            Log.e("WebSocket", "Fallo al enviar mensaje")
-        }
-    }
-
     fun disconnect() {
         webSocket?.close(1000, "Desconectado por el usuario")
         webSocket = null

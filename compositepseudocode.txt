@@ -1,0 +1,18 @@
+class Componente:
+    def operacion(self):
+        pass
+
+class Hoja(Componente):
+    def operacion(self):
+        print("Operación en Hoja")
+
+class Composite(Componente):
+    def __init__(self):
+        self._hijos = []
+
+    def agregar(self, componente):
+        self._hijos.append(componente)
+
+    def operacion(self):
+        for hijo in self._hijos:
+            hijo.operacion()

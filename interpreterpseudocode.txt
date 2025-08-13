@@ -1,0 +1,15 @@
+class Expresion:
+    def interpretar(self, contexto):
+        pass
+
+class TerminalExpresion(Expresion):
+    def interpretar(self, contexto):
+        return contexto == "valor_esperado"
+
+class OExpresion(Expresion):
+    def __init__(self, expr1, expr2):
+        self._expr1 = expr1
+        self._expr2 = expr2
+
+    def interpretar(self, contexto):
+        return self._expr1.interpretar(contexto) or self._expr2.interpretar(contexto)

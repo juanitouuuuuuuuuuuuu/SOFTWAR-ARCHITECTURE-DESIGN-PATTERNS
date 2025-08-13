@@ -1,0 +1,22 @@
+// Factory Method
+class Dialog {
+  render() {
+    const button = this.createButton();
+    button.onClick();
+  }
+}
+
+class WindowsDialog extends Dialog {
+  createButton() { return new WindowsButton(); }
+}
+class WebDialog extends Dialog {
+  createButton() { return new HTMLButton(); }
+}
+
+// Products
+class WindowsButton { onClick() { console.log("Windows button clicked"); } }
+class HTMLButton { onClick() { console.log("HTML button clicked"); } }
+
+// Client
+new WindowsDialog().render();
+new WebDialog().render();

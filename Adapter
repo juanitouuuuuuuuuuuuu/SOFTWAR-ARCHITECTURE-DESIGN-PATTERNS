@@ -1,0 +1,22 @@
+Adapter
+
+Pseudocodigo
+
+class EnchufeEuropeo
+class Adaptador:
+    recibe enchufe europeo
+    convierte a formato americano
+
+kotlin
+
+interface EnchufeAmericano { fun conectar() }
+class EnchufeEuropeo { fun conectarEuro() = println("Conectado en formato europeo") }
+
+class AdaptadorEuropeo(private val euro: EnchufeEuropeo) : EnchufeAmericano {
+    override fun conectar() = euro.conectarEuro()
+}
+
+fun main() {
+    val adaptador = AdaptadorEuropeo(EnchufeEuropeo())
+    adaptador.conectar()
+}

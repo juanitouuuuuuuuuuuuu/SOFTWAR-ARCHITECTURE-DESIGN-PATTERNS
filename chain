@@ -1,0 +1,25 @@
+chain of responsability
+
+Pseudocodigo
+
+manejador1 -> manejador2 -> manejador3
+petición pasa por la cadena hasta que alguien responde
+
+Kotlin
+
+abstract class Handler {
+    var next: Handler? = null
+    fun handle(request: String) {
+        if (!process(request)) next?.handle(request)
+    }
+    abstract fun process(request: String): Boolean
+}
+
+class SoporteBasico : Handler() {
+    override fun process(request: String) = if (request == "básico") { println("Resuelto básico"); true } else false
+}
+
+fun main() {
+    val soporte = SoporteBasico().apply { next = null }
+    soporte.handle("básico")
+}

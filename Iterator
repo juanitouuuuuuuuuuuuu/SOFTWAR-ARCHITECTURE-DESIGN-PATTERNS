@@ -1,0 +1,16 @@
+iterator
+
+Pseudocodigo
+
+iterador = lista.obtenerIterador()
+mientras iterador.tieneSiguiente():
+    imprimir iterador.siguiente()
+
+Kotlin
+
+fun main() {
+    val lista = listOf("A", "B", "C")
+    val iter = lista.iterator()
+    while (iter.hasNext()) println(iter.next())
+}
+

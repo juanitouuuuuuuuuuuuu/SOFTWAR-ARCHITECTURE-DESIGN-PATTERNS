@@ -1,0 +1,20 @@
+class Comando:
+    def ejecutar(self):
+        pass
+
+class ComandoConcreto(Comando):
+    def __init__(self, receptor):
+        self._receptor = receptor
+
+    def ejecutar(self):
+        self._receptor.accion()
+
+class Invocador:
+    def __init__(self):
+        self._comando = None
+
+    def set_comando(self, comando):
+        self._comando = comando
+
+    def ejecutar_comando(self):
+        self._comando.ejecutar()

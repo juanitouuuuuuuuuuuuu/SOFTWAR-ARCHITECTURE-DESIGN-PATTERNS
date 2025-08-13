@@ -1,0 +1,18 @@
+class Observador:
+    def actualizar(self):
+        pass
+
+class Sujeto:
+    def __init__(self):
+        self._observadores = []
+
+    def agregar_observador(self, observador):
+        self._observadores.append(observador)
+
+    def notificar(self):
+        for obs in self._observadores:
+            obs.actualizar()
+
+class ObservadorConcreto(Observador):
+    def actualizar(self):
+        print("Reaccionando al cambio")

@@ -1,0 +1,16 @@
+class Componente:
+    def operacion(self):
+        pass
+
+class Decorador(Componente):
+    def __init__(self, componente):
+        self._componente = componente
+
+    def operacion(self):
+        self._componente.operacion()
+
+class DecoradorConcreto(Decorador):
+    def operacion(self):
+        print("Antes de la operación")
+        super().operacion()
+        print("Después de la operación")

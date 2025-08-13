@@ -1,0 +1,19 @@
+Patron singleton
+
+Pseudocodigo 
+
+class Configuracion:
+    instancia única
+    método obtenerInstancia():
+        si no existe instancia -> crear
+        devolver instancia
+
+
+kotlin
+
+object Configuracion {
+    val modo = "Producción"
+}
+fun main() {
+    println(Configuracion.modo)
+}

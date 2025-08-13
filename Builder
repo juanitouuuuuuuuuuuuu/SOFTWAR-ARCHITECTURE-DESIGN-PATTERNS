@@ -1,0 +1,30 @@
+Builder
+
+Pseudocodigo
+
+builder = new BuilderHamburguesa()
+builder.agregarPan()
+builder.agregarCarne()
+builder.agregarQueso()
+hamburguesa = builder.build()
+
+Kotlin
+
+class Hamburguesa(val pan: String?, val carne: String?, val queso: String?)
+
+class HamburguesaBuilder {
+    var pan: String? = null
+    var carne: String? = null
+    var queso: String? = null
+
+    fun build() = Hamburguesa(pan, carne, queso)
+}
+
+fun main() {
+    val burger = HamburguesaBuilder().apply {
+        pan = "Integral"
+        carne = "Res"
+        queso = "Cheddar"
+    }.build()
+    println(burger)
+}

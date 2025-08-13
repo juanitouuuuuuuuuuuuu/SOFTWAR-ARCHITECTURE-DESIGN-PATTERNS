@@ -1,0 +1,19 @@
+Flyweight
+
+Pseudocodigo
+
+si objeto con estado compartido ya existe -> reutilizar
+
+Kotlin
+
+class Icono(private val tipo: String)
+object FabricaIconos {
+    private val cache = mutableMapOf<String, Icono>()
+    fun obtener(tipo: String) = cache.getOrPut(tipo) { Icono(tipo) }
+}
+
+fun main() {
+    val a = FabricaIconos.obtener("estrella")
+    val b = FabricaIconos.obtener("estrella")
+    println(a === b) // true
+}
